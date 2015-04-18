@@ -13,6 +13,7 @@ RM = rm -rf
 
 #List classes here
 CLASS = main\
+		modules/CPUInfo\
 		modules/DateTime\
 		modules/OSInfo\
 		AWindow\

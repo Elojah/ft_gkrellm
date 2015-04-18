@@ -1,16 +1,16 @@
-#ifndef O_S_INFO_H
-# define O_S_INFO_H
+#ifndef CPU_INFO_H
+# define CPU_INFO_H
 
 # include "IMonitorModule.hpp"
 class IMonitorModule;
 
-class OSInfo: public IMonitorModule
+class CPUInfo: public IMonitorModule
 {
 public:
-	OSInfo(void);
-	~OSInfo(void);
-	OSInfo(OSInfo const &src);
-	OSInfo&	operator=(OSInfo const &rhs);
+	CPUInfo(void);
+	~CPUInfo(void);
+	CPUInfo(CPUInfo const &src);
+	CPUInfo&	operator=(CPUInfo const &rhs);
 
 	virtual void							start(void);
 	virtual void							refresh(void);

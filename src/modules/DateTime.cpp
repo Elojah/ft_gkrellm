@@ -35,7 +35,7 @@ void						DateTime::refresh(void) {
 	std::stringstream		time;
 
 	_data.str_content.clear();
-	date << (now->tm_year + 1900) << '-'
+	date << ' ' << (now->tm_year + 1900) << '-'
 		<< (now->tm_mon + 1) << '-'
 		<<  now->tm_mday;
 	_data.str_content = date.str();
@@ -48,7 +48,7 @@ void						DateTime::refresh(void) {
 		time << "0";
 	}
 	time << now->tm_sec;
-	_data.str_content += "  |  ";
+	_data.str_content += "  /  ";
 	_data.str_content += time.str();
 }
 
