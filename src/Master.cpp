@@ -5,6 +5,7 @@
 #include "OSInfo.hpp"
 #include "DateTime.hpp"
 #include "CPUInfo.hpp"
+#include "RAMInfo.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
@@ -25,6 +26,7 @@ void			Master::createModules(int nModules) {
 	_mods.push_back(new OSInfo());
 	_mods.push_back(new DateTime());
 	_mods.push_back(new CPUInfo());
+	_mods.push_back(new RAMInfo());
 	/*
 	ADD
 	*/
@@ -75,7 +77,7 @@ void		Master::switchDisplay(void) {
 	} else {
 		_dis = new NCursesDisplay();
 	}
-	nDis = nDis ? 1 : 0;
+	nDis = nDis ? 0 : 1;
 	sleep(1);
 }
 
