@@ -1,4 +1,6 @@
 #include "FLDisplay.hpp"
+#include "IMonitorModule.hpp"
+#include <iostream>
 
 FLDisplay::FLDisplay(void) {
 }
@@ -9,20 +11,27 @@ FLDisplay::FLDisplay(FLDisplay const &src) {
 }
 
 FLDisplay::~FLDisplay(void) {
+	for (std::vector<Fl_Box *>::const_iterator i = _children.begin(); i != _children.end(); ++i) {
+		delete *i;
+	}
+	delete _win;
+
 }
 
 void			FLDisplay::start(std::vector<IMonitorModule *> const &mods) {
-	(void)mods;
+	IMonitorModule::sData		d;
 
-	Fl_Window *window = new Fl_Window(FLWWIDTH, FLWHEIGHT, "gkrellm");
-	/*Fl_Box *box = new Fl_Box(20,40,260,100,"Hello, World!");
-	box->box(FL_UP_BOX);
-	box->labelsize(36);
-	box->labelfont(FL_BOLD+FL_ITALIC);
-	box->labeltype(FL_SHADOW_LABEL);*/
-	window->end();
-	window->show(0, 0x0);
-	Fl::run();
+	_win = new Fl_Window(FLWWIDTH, FLWHEIGHT, "gkrellm");
+	for (std::vector<IMonitorModule *>::const_iterator i = mods.begin(); i != mods.end(); ++i) {
+		d = (*i)->getData();
+		_children.push_back(new Fl_Box(d.x * MULT_PIX, d.y * MULT_PIX, d.w * MULT_PIX, d.h * MULT_PIX, strdup(d.title.c_str())));
+		_children.back()->box(FL_UP_BOX);
+		_children.back()->labelsize(12);
+		_children.back()->labelfont(FL_BOLD + FL_ITALIC);
+		// _children.back()->labeltype(FL_SHADOW_LABEL);
+	}
+	_win->end();
+	_win->show(0, 0x0);
 }
 
 void			FLDisplay::render(std::vector<IMonitorModule *> const &mods) {

@@ -3,7 +3,7 @@
 
 # define REFRESH_TIME 500
 # define ESC 69
-# define FLWWIDTH 700
+# define FLWWIDTH 1200
 # define FLWHEIGHT 900
 
 # include <vector>
