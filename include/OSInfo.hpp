@@ -4,6 +4,8 @@
 # include "IMonitorModule.hpp"
 class IMonitorModule;
 
+# include <vector>
+
 class OSInfo: public IMonitorModule
 {
 public:
@@ -11,8 +13,14 @@ public:
 	~OSInfo(void);
 	OSInfo(OSInfo const &src);
 	OSInfo&	operator=(OSInfo const &rhs);
+
+	virtual void							start(void);
+	virtual void							refresh(void);
+	virtual IMonitorModule::sData const		&getData(void) const;
+
 protected:
 private:
+	IMonitorModule::sData	_data;
 };
 
 #endif

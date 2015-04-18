@@ -2,6 +2,7 @@
 #include "NCursesDisplay.hpp"
 #include "FLDisplay.hpp"
 #include "UserInfo.hpp"
+#include "OSInfo.hpp"
 #include <cstdlib>
 #include <iostream>
 
@@ -19,6 +20,7 @@ void			Master::createModules(int nModules) {
 		return ;
 	}
 	_mods.push_back(new UserInfo());
+	_mods.push_back(new OSInfo());
 	/*
 	ADD
 	*/

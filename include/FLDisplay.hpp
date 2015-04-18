@@ -5,7 +5,7 @@
 class IMonitorDisplay;
 
 /*
-RSIKED !!!
+RISKED !!!
 */
 # undef border
 

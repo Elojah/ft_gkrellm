@@ -99,6 +99,11 @@ void	AWindow::notifyUser(const std::string &str) const {
 	wrefresh(_wuser);
 }
 
+void	AWindow::printText(const std::string &str) const {
+	mvwaddstr(_wwin, 2, 2, str.c_str());
+	wrefresh(_wwin);
+}
+
 void			AWindow::setTitle(std::string const &titleSet) {
 	_wtitle = std::string(titleSet);
 	box(_wwin, 0, 0);

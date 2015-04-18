@@ -26,6 +26,7 @@ public:
 	virtual std::string			readUser(void) const;
 	virtual void				notifyUser(const std::string&) const;
 	virtual void				setTitle(const std::string&);
+	virtual void				printText(const std::string &str) const;
 protected:
 	WINDOW				*_wwin;
 	WINDOW				*_wuser;

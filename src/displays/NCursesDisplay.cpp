@@ -70,10 +70,10 @@ void		NCursesDisplay::render(std::vector<IMonitorModule *> const &mods) {
 	nModules = mods.size();
 	// wclear(_wwin);
 	for (unsigned int i = 0; i < nModules; ++i) {
-		wrefresh(_children[i]->getWin());
+		wclear(_children[i]->getWin());
 		d = mods[i]->getData();
+		_children[i]->printText(d.str_content);
 		_children[i]->setTitle(d.title);
-		_children[i]->notifyUser(d.str_content);
 		wrefresh(_children[i]->getWin());
 	}
 	// wrefresh(_wwin);
