@@ -8,6 +8,7 @@
 #include "RAMInfo.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <unistd.h>
 
 Master::Master(int nDisplay) {
 	if (nDisplay == 0) {
@@ -50,10 +51,12 @@ void			Master::loop(void) {
 	_dis->render(_mods);
 	while (true) {
 		input = _dis->input();
-		/*if (input)
-			std::cout << input << std::endl;*/
 		if (input == ESCFL || input == ESCNC) {
 			break ;
+		} else if (input == 'a') {
+			switchDisplay();
+			_dis->start(_mods);
+			_dis->render(_mods);
 		}
 		if ((tmp = clock() - t) > REFRESH_TIME) {
 			for (std::vector<IMonitorModule *>::iterator i = _mods.begin(); i != _mods.end(); ++i) {
@@ -64,6 +67,19 @@ void			Master::loop(void) {
 	}
 }
 
+void		Master::switchDisplay(void) {
+	static int	nDis = 0;
+
+	delete _dis;
+	if (!nDis) {
+		endwin();
+		_dis = new FLDisplay();
+	} else {
+		_dis = new NCursesDisplay();
+	}
+	nDis = nDis ? 0 : 1;
+	sleep(1);
+}
 
 Master::~Master(void) {
 	delete _dis;
