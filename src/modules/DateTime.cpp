@@ -7,6 +7,7 @@ DateTime::DateTime(void) {
 	_data.w = 50;
 	_data.y = 7;
 	_data.x = 2;
+	_data.type = 1;
 }
 
 DateTime::DateTime(DateTime const &src) {

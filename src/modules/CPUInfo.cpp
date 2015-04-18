@@ -6,6 +6,7 @@ CPUInfo::CPUInfo(void) {
 	_data.w = 50;
 	_data.y = 7;
 	_data.x = 52;
+	_data.type = 1;
 }
 
 CPUInfo::CPUInfo(CPUInfo const &src) {
