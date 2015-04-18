@@ -1,8 +1,17 @@
 #include "Master.hpp"
+#include <iostream>
 
 int		main(void) {
-	Master	m(1);
+	
 
+	int		bg;
+
+	bg = 0;
+	std::cout << "Choose your graphic library : " << std::endl;
+	std::cout << "[0] Ncurses" << std::endl;
+	std::cout << "[1] FLTK " << std::endl;
+	std::cin >> bg;
+	Master	m(bg);
 	m.createModules(1);
 	m.loop();
 	return (0);
