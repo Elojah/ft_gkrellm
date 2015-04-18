@@ -6,6 +6,7 @@ UserInfo::UserInfo(void) {
 	_data.w = 50;
 	_data.y = 2;
 	_data.x = 2;
+	_data.type = 1;
 }
 
 UserInfo::UserInfo(UserInfo const &src) {

@@ -14,6 +14,7 @@ public:
 		int				y;
 		int				x;
 		std::string		str_content;
+		int				type; // [1] string [2] graph [3] image
 	};
 	virtual ~IMonitorModule(void){}
 	virtual void						start(void) = 0;
