@@ -34,7 +34,7 @@ DEP = $(addsuffix .d, $(addprefix $(BUILD_DIR)/, $(CLASS)))
 LIBS = $(addprefix -L,$(LIB_DIR))
 
 #Flags
-CFLAGS =-MMD -Wall -Wextra -Werror -O3 -g -std=c++98
+CFLAGS =-MMD -Wall -Wextra -Werror -O3 -g -std=c++98 -Wno-unused-parameter
 LFLAGS =
 
 #Libs

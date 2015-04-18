@@ -81,5 +81,6 @@ void		NCursesDisplay::render(std::vector<IMonitorModule *> const &mods) {
 }
 
 int		NCursesDisplay::input(void) {
+	wtimeout(_wwin, REFRESH_TIME);
 	return (wgetch(_wwin));
 }

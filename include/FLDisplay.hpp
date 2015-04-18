@@ -5,17 +5,20 @@
 
 # include "IMonitorDisplay.hpp"
 class IMonitorDisplay;
+# include "IMonitorModule.hpp"
 class IMonitorModule;
 
 /*
 RISKED !!!
 */
 # undef border
+# undef scroll
 
 # include <FL/Fl.H>
 # include <FL/Fl_Window.H>
 # include <FL/Fl_Group.H>
 # include <FL/Fl_Tabs.H>
+# include <FL/Fl_Text_Display.H>
 
 class FLDisplay : public IMonitorDisplay
 {
@@ -30,9 +33,13 @@ public:
 
 protected:
 private:
-	Fl_Window				*_win;
-	Fl_Tabs					*_tab;
-	std::vector<Fl_Group *>	_children;
+	void			interpretData(IMonitorModule::sData &d);
+
+	Fl_Window						*_win;
+	Fl_Tabs							*_tab;
+	std::vector<Fl_Group *>			_children;
+	std::vector<Fl_Text_Display *>	_text;
+	std::vector<Fl_Text_Buffer *>	_buffers;
 };
 
 #endif

@@ -42,19 +42,6 @@ void	CPUInfo::start(void) {
 		_data.str_content.pop_back();
 		_data.str_content += "  /  ";
 	}
-	// pipe = popen("system_profiler | grep Processor", "r");
-	// if (pipe)
-	// {
-	// 	while(!feof(pipe))
-	// 	{
-	// 		if(fgets(buffer, 128, pipe))
-	// 			version += buffer;
-	// 	}
-	// 	pclose(pipe);
-	// 	version = str.substr(version.find('\n', version.find('\n', 0)));
-	// 	_data.str_content += " Usage: " + version;
-	// 	_data.str_content.pop_back();
-	// }
 }
 
 void						CPUInfo::refresh(void) {

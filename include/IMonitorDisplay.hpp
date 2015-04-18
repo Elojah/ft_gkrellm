@@ -4,8 +4,9 @@
 # define REFRESH_TIME 500
 # define ESCFL 65307
 # define ESCNC 27
-# define FLWWIDTH 1200
-# define FLWHEIGHT 900
+# define AFL 25
+# define FLWWIDTH 600
+# define FLWHEIGHT 200
 
 # include <vector>
 class IMonitorModule;
