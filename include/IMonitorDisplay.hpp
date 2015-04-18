@@ -3,6 +3,8 @@
 
 # define REFRESH_TIME 500
 # define ESC 69
+# define FLWWIDTH 700
+# define FLWHEIGHT 900
 
 # include <vector>
 class IMonitorModule;
