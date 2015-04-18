@@ -3,6 +3,7 @@
 #include "FLDisplay.hpp"
 #include "UserInfo.hpp"
 #include "OSInfo.hpp"
+#include "DateTime.hpp"
 #include <cstdlib>
 #include <iostream>
 
@@ -21,6 +22,7 @@ void			Master::createModules(int nModules) {
 	}
 	_mods.push_back(new UserInfo());
 	_mods.push_back(new OSInfo());
+	_mods.push_back(new DateTime());
 	/*
 	ADD
 	*/

@@ -13,6 +13,7 @@ RM = rm -rf
 
 #List classes here
 CLASS = main\
+		modules/DateTime\
 		modules/OSInfo\
 		AWindow\
 		modules/UserInfo\
@@ -60,7 +61,7 @@ clean :
 	$(RM) $(BUILD_DIR)
 
 fclean :
-	$(RM) $(BUILD_DIR) $(TARGET) ./lib/fltk-1.3.3
+	$(RM) $(BUILD_DIR) $(TARGET)
 
 re : fclean all
 
