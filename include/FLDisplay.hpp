@@ -14,7 +14,8 @@ RISKED !!!
 
 # include <FL/Fl.H>
 # include <FL/Fl_Window.H>
-# include <FL/Fl_Box.H>
+# include <FL/Fl_Group.H>
+# include <FL/Fl_Tabs.H>
 
 class FLDisplay : public IMonitorDisplay
 {
@@ -30,7 +31,8 @@ public:
 protected:
 private:
 	Fl_Window				*_win;
-	std::vector<Fl_Box *>	_children;
+	Fl_Tabs					*_tab;
+	std::vector<Fl_Group *>	_children;
 };
 
 #endif

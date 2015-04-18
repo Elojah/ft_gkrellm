@@ -49,6 +49,8 @@ void			Master::loop(void) {
 	_dis->render(_mods);
 	while (true) {
 		input = _dis->input();
+		/*if (input)
+			std::cout << input << std::endl;*/
 		if (input == ESC) {
 			break ;
 		}
