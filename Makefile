@@ -16,6 +16,7 @@ CLASS = main\
 		modules/CPUInfo\
 		modules/DateTime\
 		modules/OSInfo\
+		modules/RAMInfo\
 		AWindow\
 		modules/UserInfo\
 		displays/FLDisplay\
