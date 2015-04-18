@@ -26,7 +26,7 @@ public:
 	FLDisplay&	operator=(FLDisplay const &rhs);
 	virtual void			start(std::vector<IMonitorModule *> const &mods);
 	virtual void			render(std::vector<IMonitorModule *> const &mods);
-	virtual char			input(void);
+	virtual int				input(void);
 
 protected:
 private:
