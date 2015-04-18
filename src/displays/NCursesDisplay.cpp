@@ -46,7 +46,7 @@ NCursesDisplay::~NCursesDisplay(void) {
 	for (std::vector<AWindow *>::iterator i = _children.begin(); i != _children.end(); ++i) {
 		delete *i;
 	}
-	endwin();
+	curs_set(0);
 }
 
 void		NCursesDisplay::start(std::vector<IMonitorModule *> const &mods) {
@@ -80,7 +80,6 @@ void		NCursesDisplay::render(std::vector<IMonitorModule *> const &mods) {
 	// setTitle("Gkrellm");
 }
 
-char	NCursesDisplay::input(void) {
-	wtimeout(_wwin, REFRESH_TIME);
+int		NCursesDisplay::input(void) {
 	return (wgetch(_wwin));
 }

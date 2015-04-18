@@ -2,7 +2,7 @@
 
 CPUInfo::CPUInfo(void) {
 	_data.title = "CPU info";
-	_data.h = 5;
+	_data.h = 15;
 	_data.w = 50;
 	_data.y = 7;
 	_data.x = 52;
@@ -24,10 +24,10 @@ CPUInfo		&CPUInfo::operator=(CPUInfo const &rhs) {
 }
 
 void	CPUInfo::start(void) {
-	FILE		*pipe(popen("sysctl -n machdep.cpu.brand_string", "r"));
-	char		buffer[128];
-	std::string	os("");
-	std::string	version("");
+	FILE			*pipe(popen("sysctl -n machdep.cpu.brand_string", "r"));
+	char			buffer[128];
+	std::string		os;
+	std::string		version;
 
 	if (pipe)
 	{
@@ -41,18 +41,19 @@ void	CPUInfo::start(void) {
 		_data.str_content.pop_back();
 		_data.str_content += "  /  ";
 	}
-	pipe = popen("uname -r", "r");
-	if (pipe)
-	{
-		while(!feof(pipe))
-		{
-			if(fgets(buffer, 128, pipe))
-				version += buffer;
-		}
-		pclose(pipe);
-		_data.str_content += " Version: " + version;
-		_data.str_content.pop_back();
-	}
+	// pipe = popen("system_profiler | grep Processor", "r");
+	// if (pipe)
+	// {
+	// 	while(!feof(pipe))
+	// 	{
+	// 		if(fgets(buffer, 128, pipe))
+	// 			version += buffer;
+	// 	}
+	// 	pclose(pipe);
+	// 	version = str.substr(version.find('\n', version.find('\n', 0)));
+	// 	_data.str_content += " Usage: " + version;
+	// 	_data.str_content.pop_back();
+	// }
 }
 
 void						CPUInfo::refresh(void) {

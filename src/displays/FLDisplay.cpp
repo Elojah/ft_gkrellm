@@ -50,11 +50,14 @@ void			FLDisplay::start(std::vector<IMonitorModule *> const &mods) {
 
 void			FLDisplay::render(std::vector<IMonitorModule *> const &mods) {
 	(void)mods;
+	Fl::wait();
 }
 
-char			FLDisplay::input(void) {
-	;
-	return (Fl::event());
+int			FLDisplay::input(void) {
+	int			n;
+
+	n = Fl::event_key();
+	return (n);
 }
 
 FLDisplay		&FLDisplay::operator=(FLDisplay const &rhs) {

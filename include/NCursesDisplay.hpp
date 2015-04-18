@@ -23,7 +23,7 @@ public:
 
 	virtual void			start(std::vector<IMonitorModule *> const &mods);
 	virtual void			render(std::vector<IMonitorModule *> const &mods);
-	virtual char			input(void);
+	virtual int				input(void);
 protected:
 private:
 	std::vector<AWindow *>	_children;

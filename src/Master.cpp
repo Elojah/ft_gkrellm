@@ -14,7 +14,6 @@ Master::Master(int nDisplay) {
 	} else if (nDisplay == 1) {
 		_dis = new FLDisplay();
 	}
-	std::cout << "Dis:\t" << _dis << std::endl;
 }
 
 void			Master::createModules(int nModules) {
@@ -43,7 +42,7 @@ Master::Master(Master const &src) {
 void			Master::loop(void) {
 	clock_t		t;
 	clock_t		tmp;
-	char		input;
+	int			input;
 
 	t = clock();
 	_dis->render(_mods);
@@ -51,7 +50,7 @@ void			Master::loop(void) {
 		input = _dis->input();
 		/*if (input)
 			std::cout << input << std::endl;*/
-		if (input == ESC) {
+		if (input == ESCFL || input == ESCNC) {
 			break ;
 		}
 		if ((tmp = clock() - t) > REFRESH_TIME) {
@@ -69,7 +68,7 @@ Master::~Master(void) {
 	for (std::vector<IMonitorModule *>::iterator i = _mods.begin(); i != _mods.end(); ++i) {
 		delete *i;
 	}
-
+	endwin();
 }
 
 Master		&Master::operator=(Master const &rhs) {
