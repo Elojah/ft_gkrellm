@@ -58,7 +58,7 @@ void						RAMInfo::refresh(void) {
 	std::stringstream		info;
 
 	info << std::fixed << std::setprecision (2);
-	info << "  Active ram: " << active * 100 << "%\n" 
+	info << "   Active ram: " << active * 100 << "%\n" 
 		<< "    Inactive ram: " << inactive * 100 << "%\n"
 		<< "    Wired ram: " << wired * 100 << "%\n"
 		<< "    Freet ram: " << free_ram * 100 << "%\n";
