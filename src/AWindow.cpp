@@ -1,5 +1,6 @@
 #include "AWindow.hpp"
 #include <iostream>
+#include <deque>
 #include <string.h>
 #include <sys/ioctl.h>
 
@@ -102,6 +103,21 @@ void	AWindow::notifyUser(const std::string &str) const {
 void	AWindow::printText(const std::string &str) const {
 	mvwaddstr(_wwin, 2, 2, str.c_str());
 	wrefresh(_wwin);
+}
+
+void	AWindow::showGraph(IMonitorModule::sData &d) const {
+	std::string			s;
+	unsigned int		pad(0);
+
+	mvwaddstr(_wwin, _wh - 9, 2, "123456789");
+	for (std::deque<unsigned int>::iterator i = d.buffer.begin(); i != d.buffer.end(); ++i) {
+		for (unsigned int n = 0; n < *i; n += 10) {
+			s.push_back('=');
+		}
+		s.push_back('|');
+		mvwaddstr(_wwin, _wh - 8 + pad++, 2, s.c_str());
+		s.clear();
+	}
 }
 
 void			AWindow::setTitle(std::string const &titleSet) {

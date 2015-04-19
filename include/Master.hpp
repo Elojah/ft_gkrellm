@@ -14,7 +14,7 @@ public:
 
 	void			createModules(int nModules);
 	void			loop(void);
-	void			switchDisplay(void);
+	void			switchDisplay(int nDis);
 protected:
 private:
 	Master(void);

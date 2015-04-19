@@ -59,26 +59,45 @@ void			FLDisplay::start(std::vector<IMonitorModule *> const &mods) {
 void			FLDisplay::interpretData(IMonitorModule::sData &d) {
 	Fl_Text_Display	*tmp;
 	Fl_Text_Buffer	*buf;
+	Fl_Chart		*graph;
 
-	if (d.type == 1) {
-		buf = new Fl_Text_Buffer();
-		tmp = new Fl_Text_Display(20, 50, FLWWIDTH - 40, 50, "");
-		tmp->buffer(buf);
-		_win->resizable(*tmp);
-		_win->show();
-		_text.push_back(tmp);
-		_buffers.push_back(buf);
-		buf->text(d.str_content.c_str());
+	buf = new Fl_Text_Buffer();
+	tmp = new Fl_Text_Display(20, 50, FLWWIDTH - 40, 50, "");
+	tmp->buffer(buf);
+	_win->resizable(*tmp);
+	_win->show();
+	_text.push_back(tmp);
+	_buffers.push_back(buf);
+	buf->text(d.str_content.c_str());
+	if (d.graph) {
+		graph = new Fl_Chart(20, 100, FLWWIDTH - 40, 50, "");
+		graph->type(FL_SPIKE_CHART);
+		graph->autosize();
+		graph->bounds(0, 100);
+		for (std::deque<unsigned int>::iterator i = d.buffer.begin(); i != d.buffer.end(); ++i) {
+			graph->add(*i);
+		}
+		_graphs.push_back(graph);
 	}
 }
 
 void			FLDisplay::render(std::vector<IMonitorModule *> const &mods) {
+	IMonitorModule::sData	d;
 	unsigned int	i;
+	unsigned int	n(0);
 	unsigned int	len;
 
 	len = mods.size();
 	for (i = 0; i < len; ++i) {
-		_buffers[i]->text(mods[i]->getData().str_content.c_str());
+		d = mods[i]->getData();
+		_buffers[i]->text(d.str_content.c_str());
+		if (d.graph) {
+			_graphs[n]->clear();
+			for (std::deque<unsigned int>::iterator i = d.buffer.begin(); i != d.buffer.end(); ++i) {
+				_graphs[n]->add(*i);
+			}
+			n++;
+		}
 	}
 	Fl::wait(0.5);/*HARDCODE*/
 }

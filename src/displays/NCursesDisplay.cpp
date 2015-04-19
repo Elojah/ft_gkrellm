@@ -73,6 +73,9 @@ void		NCursesDisplay::render(std::vector<IMonitorModule *> const &mods) {
 		wclear(_children[i]->getWin());
 		d = mods[i]->getData();
 		_children[i]->printText(d.str_content);
+		if (d.graph) {
+			_children[i]->showGraph(d);
+		}
 		_children[i]->setTitle(d.title);
 		wrefresh(_children[i]->getWin());
 	}

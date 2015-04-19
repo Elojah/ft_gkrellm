@@ -19,6 +19,7 @@ RISKED !!!
 # include <FL/Fl_Group.H>
 # include <FL/Fl_Tabs.H>
 # include <FL/Fl_Text_Display.H>
+# include <FL/Fl_Chart.h>
 
 class FLDisplay : public IMonitorDisplay
 {
@@ -40,6 +41,7 @@ private:
 	std::vector<Fl_Group *>			_children;
 	std::vector<Fl_Text_Display *>	_text;
 	std::vector<Fl_Text_Buffer *>	_buffers;
+	std::vector<Fl_Chart *>			_graphs;
 };
 
 #endif

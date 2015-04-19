@@ -1,6 +1,7 @@
 #ifndef A_WINDOW_H
 # define A_WINDOW_H
 
+# include "IMonitorModule.hpp"
 # include <ncurses.h>
 # include <string>
 
@@ -27,6 +28,7 @@ public:
 	virtual void				notifyUser(const std::string&) const;
 	virtual void				setTitle(const std::string&);
 	virtual void				printText(const std::string &str) const;
+	virtual void				showGraph(IMonitorModule::sData &d) const;
 protected:
 	WINDOW				*_wwin;
 	WINDOW				*_wuser;

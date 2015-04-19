@@ -53,8 +53,8 @@ void			Master::loop(void) {
 		input = _dis->input();
 		if (input == ESCFL || input == ESCNC) {
 			break ;
-		} else if (input == 'a') {
-			switchDisplay();
+		} else if (input == 'a' || input == 'd') {
+			switchDisplay(input ==  'a' ? 1 : 0);
 			_dis->start(_mods);
 			_dis->render(_mods);
 		}
@@ -67,17 +67,15 @@ void			Master::loop(void) {
 	}
 }
 
-void		Master::switchDisplay(void) {
-	static int	nDis = 0;
-
+void		Master::switchDisplay(int nDis) {
 	delete _dis;
+	sleep(1);
 	if (!nDis) {
-		endwin();
 		_dis = new FLDisplay();
+		endwin();
 	} else {
 		_dis = new NCursesDisplay();
 	}
-	nDis = nDis ? 0 : 1;
 	sleep(1);
 }
 

@@ -7,6 +7,7 @@ UserInfo::UserInfo(void) {
 	_data.y = 2;
 	_data.x = 2;
 	_data.type = 1;
+	_data.graph = false;
 }
 
 UserInfo::UserInfo(UserInfo const &src) {

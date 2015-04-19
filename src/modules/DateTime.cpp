@@ -8,6 +8,7 @@ DateTime::DateTime(void) {
 	_data.y = 7;
 	_data.x = 2;
 	_data.type = 1;
+	_data.graph = false;
 }
 
 DateTime::DateTime(DateTime const &src) {

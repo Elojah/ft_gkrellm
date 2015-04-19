@@ -7,6 +7,7 @@ OSInfo::OSInfo(void) {
 	_data.y = 2;
 	_data.x = 52;
 	_data.type = 1;
+	_data.graph = false;
 }
 
 OSInfo::OSInfo(OSInfo const &src) {

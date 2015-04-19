@@ -17,6 +17,7 @@ public:
 	virtual void							start(void);
 	virtual void							refresh(void);
 	virtual IMonitorModule::sData const		&getData(void) const;
+	void									addNewValueToGraph(unsigned int percentage);
 
 protected:
 private:

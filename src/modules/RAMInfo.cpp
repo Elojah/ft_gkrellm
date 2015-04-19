@@ -14,6 +14,7 @@ RAMInfo::RAMInfo(void) {
 	_data.y = 12;
 	_data.x = 2;
 	_data.type = 1;
+	_data.graph = true;
 }
 
 RAMInfo::RAMInfo(RAMInfo const &src) {
@@ -58,14 +59,22 @@ void						RAMInfo::refresh(void) {
 	std::stringstream		info;
 
 	info << std::fixed << std::setprecision (2);
-	info << "  Active ram: " << active * 100 << "%\n" 
+	info << "  Active ram: " << active * 100 << "%\n"
 		<< "    Inactive ram: " << inactive * 100 << "%\n"
 		<< "    Wired ram: " << wired * 100 << "%\n"
 		<< "    Freet ram: " << free_ram * 100 << "%\n";
 
 	_data.str_content = info.str();
-	;
+	addNewValueToGraph(static_cast<unsigned int>(active * 100));
 }
+
+void				RAMInfo::addNewValueToGraph(unsigned int percentage) {
+	_data.buffer.insert(_data.buffer.begin(), percentage);
+	if (_data.buffer.size() > MAX_SAVE) {
+		_data.buffer.erase(_data.buffer.end() - 1);
+	}
+}
+
 
 IMonitorModule::sData const	&RAMInfo::getData(void) const {
 	return (_data);

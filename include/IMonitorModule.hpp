@@ -1,8 +1,10 @@
 #ifndef I_MONITOR_MODULE_H
 # define I_MONITOR_MODULE_H
 
+# define MAX_SAVE 8
 # define MAX_MODULES 8
 # include <string>
+# include <deque>
 
 class IMonitorModule
 {
@@ -15,6 +17,8 @@ public:
 		int				x;
 		std::string		str_content;
 		int				type; // [1] string [2] graph [3] image
+		bool			graph;
+		std::deque<unsigned int>	buffer;
 	};
 	virtual ~IMonitorModule(void){}
 	virtual void						start(void) = 0;
