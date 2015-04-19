@@ -30,6 +30,7 @@ void			Master::createModules(int nModules) {
 	/*
 	ADD
 	*/
+	// MODULE CHAT POUR ZAZ
 	for (std::vector<IMonitorModule *>::iterator i = _mods.begin(); i != _mods.end(); ++i) {
 		(*i)->start();
 		(*i)->refresh();
